@@ -11,6 +11,7 @@ Group:     System/Libraries
 Source0:   http://trac.bjourne.webfactional.com/attachment/wiki/WikiStart/gtkimageview-%{version}.tar.gz
 # (fc) 1.3.0-1mdv disable -Werror flag
 Patch0:    gtkimageview-1.3.0-nowerror.patch
+BuildRoot: %{_tmppath}/%{name}-%{version}-root
 URL:       http://trac.bjourne.webfactional.com/
 Requires:  common-licenses
 BuildRequires: gtk+2-devel
