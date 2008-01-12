@@ -5,7 +5,7 @@
 Summary:   Simple image viewer widget for GTK
 Name:      gtkimageview
 Version:   1.3.0
-Release: %mkrel 1
+Release: %mkrel 2
 License:   LGPL
 Group:     System/Libraries
 Source0:   http://trac.bjourne.webfactional.com/attachment/wiki/WikiStart/gtkimageview-%{version}.tar.gz
