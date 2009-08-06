@@ -54,10 +54,8 @@ viewing applications.
 %setup  -q
 %patch0 -p1 -b .nowerror
 
-#needed by patch0
-autoreconf -fi
-
 %build
+NOCONFIGURE=yes ./autogen.sh
 %configure2_5x
 %make
 
