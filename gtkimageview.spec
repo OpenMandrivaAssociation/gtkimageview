@@ -5,25 +5,23 @@
 Summary:   Simple image viewer widget for GTK
 Name:      gtkimageview
 Version:   1.6.4
-Release: %mkrel 4
+Release: 5
 License:   LGPLv2+
 Group:     System/Libraries
 Source0:   http://trac.bjourne.webfactional.com/attachment/wiki/WikiStart/gtkimageview-%{version}.tar.gz
 # (fc) 1.3.0-1mdv disable -Werror flag
 Patch0:    gtkimageview-1.3.0-nowerror.patch
-BuildRoot: %{_tmppath}/%{name}-%{version}-root
 URL:       http://trac.bjourne.webfactional.com/
 Requires:  common-licenses
 BuildRequires: gtk+2-devel
 BuildRequires: gtk-doc
-BuildRequires: automake1.9
+BuildRequires: autoconf automake libtool
 BuildRequires: gnome-common
 
 %description
 GtkImageView is a widget that provides a zoomable and panable view of
 a GdkPixbuf. It is intended to be usable in most types of image
 viewing applications.
-
 
 %package -n %{lib_name}
 Summary: %{summary}
@@ -48,8 +46,6 @@ GtkImageView is a widget that provides a zoomable and panable view of
 a GdkPixbuf. It is intended to be usable in most types of image
 viewing applications.
 
-
-
 %prep
 %setup  -q
 %patch0 -p1 -b .nowerror
@@ -63,27 +59,15 @@ NOCONFIGURE=yes ./autogen.sh
 rm -rf %{buildroot}
 %makeinstall_std
 
-%clean
-rm -rf %{buildroot}
-
-%if %mdkversion < 200900
-%post -n %{lib_name} -p /sbin/ldconfig
-%endif
-
-%if %mdkversion < 200900
-%postun -n %{lib_name} -p /sbin/ldconfig
-%endif
+# cleanups
+rm -rf %{buildroot}%{_libdir}/lib*.*a
 
 %files -n %{lib_name}
-%defattr(-, root, root)
 %doc README
 %{_libdir}/*.so.%{lib_major}*
 
 %files -n %{lib_name_devel}
-%defattr(-, root, root)
 %doc %{_datadir}/gtk-doc/html/*
 %{_libdir}/lib*.so
-%{_libdir}/lib*.la
-%{_libdir}/lib*.a
 %{_libdir}/pkgconfig/*
 %{_includedir}/*
