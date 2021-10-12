@@ -5,7 +5,7 @@
 Summary:	Simple image viewer widget for GTK
 Name:		gtkimageview
 Version:	1.6.4
-Release:	20
+Release:	21
 License:	LGPLv2+
 Group:		System/Libraries
 Url:		http://trac.bjourne.webfactional.com/
@@ -48,16 +48,16 @@ viewing applications.
 
 %prep
 %setup  -q
-%apply_patches
+%autopatch -p1
 
 %build
 NOCONFIGURE=yes ./autogen.sh
-%configure2_5x \
+%configure \
 	--disable-static
-%make LIBS="-lm"
+%make_build LIBS="-lm"
 
 %install
-%makeinstall_std
+%make_install
 
 %files -n %{libname}
 %{_libdir}/libgtkimageview.so.%{major}*
