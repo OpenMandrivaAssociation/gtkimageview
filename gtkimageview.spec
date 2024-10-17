@@ -8,7 +8,7 @@ Version:	1.6.4
 Release:	22
 License:	LGPLv2+
 Group:		System/Libraries
-Url:		http://trac.bjourne.webfactional.com/
+Url:		https://trac.bjourne.webfactional.com/
 Source0:	http://trac.bjourne.webfactional.com/chrome/common/releases/%{name}-%{version}.tar.gz
 # (fc) 1.3.0-1mdv disable -Werror flag
 Patch0:		gtkimageview-1.3.0-nowerror.patch
